@@ -16,6 +16,7 @@ struct AssetCacheCommand: ParsableCommand {
         abstract: "Apple Asset Cache Utility",
         version: "1.0.0",
         subcommands: [
+            PathCommand.self,
             ListCommand.self,
             ReassembleCommand.self
         ]

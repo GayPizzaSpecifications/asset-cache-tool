@@ -21,3 +21,12 @@ Reassemble cached assets into a cleaner directory structure.
 $ swift run AssetCacheTool reassemble
 Copy EF628FF9-639F-4700-A269-0874AA2DBCF7 -> cache/2021FCSFall/patches/002-21830/64B33144-0546-426F-9AC1-A032B2A934E0/com_apple_MobileAsset_SoftwareUpdate/a0dcd05ecac842606be647f9627bf5b1c5a7fdae.zip
 ```
+
+### path
+
+Print the path of the asset cache.
+
+```
+$ swift run AssetCacheTool path
+/Volumes/MyCacheDrive/Library/Application Support/Apple/AssetCache/Data
+```
