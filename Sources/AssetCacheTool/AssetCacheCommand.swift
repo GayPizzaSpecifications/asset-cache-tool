@@ -1,14 +1,13 @@
 //
 //  AssetCacheCommand.swift
-//  
+//
 //
 //  Created by Kenneth Endfinger on 10/23/21.
 //
 
-import Foundation
 import ArgumentParser
+import Foundation
 
-@main
 struct AssetCacheCommand: ParsableCommand {
     static var cache: AssetCache?
 

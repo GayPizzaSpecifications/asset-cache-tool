@@ -6,17 +6,26 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: Build Debug
+      - name: Build Executable
         run: swift build -c debug
-      - name: Archive Debug
+      - name: Copy Executable
+        run: cp .build/debug/AssetCacheTool AssetCacheTool
+      - name: Archive Executable
         uses: actions/upload-artifact@v2
         with:
-          name: debug-build
-          path: .build/debug/AssetCacheTool
-      - name: Build Release
-        run: swift build -c release
-      - name: Archive Release
-        uses: actions/upload-artifact@v2
-        with:
-          name: release-build
-          path: .build/release/AssetCacheTool
+          name: AssetCacheTool
+          path: AssetCacheTool
+  format:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Swift Format
+        run: swiftformat --lint Sources
+  lint:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Swift Lint
+        run: swiftlint Sources

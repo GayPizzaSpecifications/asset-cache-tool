@@ -1,6 +1,6 @@
 //
 //  AssetCache.swift
-//  
+//
 //
 //  Created by Kenneth Endfinger on 10/23/21.
 //
@@ -17,7 +17,7 @@ struct AssetCache {
 
         let databaseURL = url.appendingPathComponent("AssetInfo.db")
         do {
-            self.db = try Connection(databaseURL.path)
+            db = try Connection(databaseURL.path)
         } catch {
             AssetCacheCommand.exit(withError: error)
         }
@@ -48,7 +48,7 @@ struct AssetCache {
     }
 
     func urlForAsset(_ asset: Asset, part: UInt64 = 0) -> URL {
-        return URL(fileURLWithPath: "\(url.path)/\(asset.guid.uuidString)/\(part)")
+        URL(fileURLWithPath: "\(url.path)/\(asset.guid.uuidString)/\(part)")
     }
 
     struct Asset: Encodable, Decodable {

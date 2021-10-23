@@ -1,12 +1,12 @@
 //
 //  ListCommand.swift
-//  
+//
 //
 //  Created by Kenneth Endfinger on 10/23/21.
 //
 
-import Foundation
 import ArgumentParser
+import Foundation
 
 struct ListCommand: ParsableCommand {
     static var configuration = CommandConfiguration(
