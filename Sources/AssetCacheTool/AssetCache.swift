@@ -47,7 +47,11 @@ struct AssetCache {
         return assets
     }
 
-    struct Asset {
+    func urlForAsset(_ asset: Asset, part: UInt64 = 0) -> URL {
+        return URL(fileURLWithPath: "\(url.path)/\(asset.guid.uuidString)/\(part)")
+    }
+
+    struct Asset: Encodable, Decodable {
         let guid: UUID
         let index: String?
         let namespace: String?
