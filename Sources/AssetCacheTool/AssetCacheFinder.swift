@@ -11,6 +11,10 @@ struct AssetCacheFinder {
     static func find() -> [URL] {
         var results: [URL] = []
 
+        if let homeAssetCacheURL = assetCacheDataURLAtRoot(FileManager.default.homeDirectoryForCurrentUser) {
+            results.append(homeAssetCacheURL)
+        }
+
         guard let mountedVolumeURLs = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: nil, options: .skipHiddenVolumes) else {
             return results
         }
