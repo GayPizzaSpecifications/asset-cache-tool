@@ -1,0 +1,8 @@
+disabled_rules:
+- type_name
+- force_cast
+line_length: 180
+identifier_name:
+  excluded:
+  - id
+  - db

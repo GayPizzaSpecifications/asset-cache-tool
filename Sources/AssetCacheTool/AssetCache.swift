@@ -1,5 +1,5 @@
 //
-//  AssetCacheDatabase.swift
+//  AssetCache.swift
 //  
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -33,7 +33,7 @@ struct AssetCache {
             let entityHeadersAsBlob = row[4] as! Blob
             let totalBytes = UInt64(row[5] as! Int64)
 
-            let headers = try PropertyListDecoder().decode([String:String].self, from: Data(entityHeadersAsBlob.bytes))
+            let headers = try PropertyListDecoder().decode([String: String].self, from: Data(entityHeadersAsBlob.bytes))
 
             assets.append(Asset(
                 guid: UUID(uuidString: guidAsString)!,
@@ -56,7 +56,7 @@ struct AssetCache {
         let index: String?
         let namespace: String?
         let uri: String
-        let headers: [String : String]
+        let headers: [String: String]
         let totalBytes: UInt64
 
         func contentTypeHeader() -> String? {
