@@ -38,7 +38,7 @@ struct AssetCacheCommand: ParsableCommand {
         let foundAssetCaches = AssetCacheFinder.find()
 
         if foundAssetCaches.isEmpty {
-            AssetCacheCommand.exit(withError: "Asset Cache not found.")
+            AssetCacheCommand.exit(withError: "Asset cache not found.")
         }
 
         return foundAssetCaches.first!

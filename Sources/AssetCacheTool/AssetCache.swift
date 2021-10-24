@@ -51,7 +51,7 @@ struct AssetCache {
         URL(fileURLWithPath: "\(url.path)/\(asset.guid.uuidString)/\(part)")
     }
 
-    struct Asset: Encodable, Decodable {
+    struct Asset: Codable {
         let guid: UUID
         let index: String?
         let namespace: String?
