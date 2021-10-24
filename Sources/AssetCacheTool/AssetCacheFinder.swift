@@ -11,6 +11,10 @@ struct AssetCacheFinder {
     static func find() -> [URL] {
         var results: [URL] = []
 
+        if let rootAssetCacheURL = assetCacheDataURLAtRoot(URL(fileURLWithPath: "/")) {
+            results.append(rootAssetCacheURL)
+        }
+
         if let homeAssetCacheURL = assetCacheDataURLAtRoot(FileManager.default.homeDirectoryForCurrentUser) {
             results.append(homeAssetCacheURL)
         }
@@ -30,7 +34,11 @@ struct AssetCacheFinder {
     }
 
     static func assetCacheDataURLAtRoot(_ root: URL) -> URL? {
-        let assetCacheDataURL = URL(fileURLWithPath: "\(root.path)/Library/Application Support/Apple/AssetCache/Data")
+        var actualRootPath = root.path
+        if root.path.hasSuffix("/") {
+            actualRootPath = String(root.path.prefix(root.path.count - 1))
+        }
+        let assetCacheDataURL = URL(fileURLWithPath: "\(actualRootPath)/Library/Application Support/Apple/AssetCache/Data")
         let assetCacheDatabaseURL = URL(fileURLWithPath: "\(assetCacheDataURL.path)/AssetInfo.db")
         if FileManager.default.fileExists(atPath: assetCacheDatabaseURL.path) {
             return assetCacheDataURL
