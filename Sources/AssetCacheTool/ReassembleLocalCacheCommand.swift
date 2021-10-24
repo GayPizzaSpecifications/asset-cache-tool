@@ -1,5 +1,5 @@
 //
-//  ReassembleCacheCommand.swift
+//  ReassembleLocalCacheCommand.swift
 //
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -8,22 +8,22 @@
 import ArgumentParser
 import Foundation
 
-struct ReassembleCacheCommand: ParsableCommand {
+struct ReassembleLocalCacheCommand: ParsableCommand {
     static var configuration = CommandConfiguration(
-        commandName: "reassemble-cache",
-        abstract: "Reassemble cached files into a clean structure."
+        commandName: "reassemble-local-cache",
+        abstract: "Reassemble cached files in the local cache into a clean structure."
     )
 
     @Option(name: .customShort("d"), help: "Target Directory Path")
     var targetDirectoryPath: String = "cache"
 
     func run() throws {
-        for asset in try AssetCacheCommand.cache!.listAllAssets() {
+        for asset in try AssetCacheToolCommand.cache.listAllAssets() {
             if asset.namespace != nil {
                 continue
             }
 
-            let sourceFileURL = AssetCacheCommand.cache!.urlForAsset(asset)
+            let sourceFileURL = AssetCacheToolCommand.cache.urlForAsset(asset)
             let targetFileURL = URL(fileURLWithPath: "\(targetDirectoryPath)/\(asset.uri)")
 
             if !FileManager.default.fileExists(atPath: sourceFileURL.path) {

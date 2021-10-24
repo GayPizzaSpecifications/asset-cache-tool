@@ -7,4 +7,4 @@
 
 import Foundation
 
-AssetCacheCommand.main()
+AssetCacheToolCommand.main()

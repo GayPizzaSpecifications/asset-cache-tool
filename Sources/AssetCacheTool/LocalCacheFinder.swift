@@ -1,5 +1,5 @@
 //
-//  AssetCacheFinder.swift
+//  LocalCacheFinder.swift
 //
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AssetCacheFinder {
+struct LocalCacheFinder {
     static func find() throws -> [URL] {
         var results: [URL] = []
 

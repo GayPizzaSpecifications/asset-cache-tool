@@ -1,5 +1,5 @@
 //
-//  ListAssetsCommand.swift
+//  ListLocalAssetsCommand.swift
 //
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -8,17 +8,17 @@
 import ArgumentParser
 import Foundation
 
-struct ListAssetsCommand: ParsableCommand {
+struct ListLocalAssetsCommand: ParsableCommand {
     static var configuration = CommandConfiguration(
-        commandName: "list-assets",
-        abstract: "List assets inside the cache."
+        commandName: "list-local-assets",
+        abstract: "List assets inside the local cache."
     )
 
-    @Flag(name: .customShort("j"), help: "Enable JSON Output")
+    @Flag(name: [.customShort("j"), .customLong("json")], help: "Enables JSON output.")
     var json: Bool = false
 
     func run() throws {
-        for asset in try AssetCacheCommand.cache!.listAllAssets() {
+        for asset in try AssetCacheToolCommand.cache.listAllAssets() {
             if json {
                 print(String(data: try JSONEncoder().encode(asset), encoding: .utf8)!)
             } else {

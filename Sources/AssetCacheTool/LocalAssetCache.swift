@@ -1,5 +1,5 @@
 //
-//  AssetCache.swift
+//  LocalAssetCache.swift
 //
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -8,7 +8,7 @@
 import Foundation
 import SQLite
 
-struct AssetCache {
+struct LocalAssetCache {
     let url: URL
     let db: Connection
 
@@ -19,7 +19,7 @@ struct AssetCache {
         do {
             db = try Connection(databaseURL.path)
         } catch {
-            AssetCacheCommand.exit(withError: error)
+            AssetCacheToolCommand.exit(withError: error)
         }
     }
 
