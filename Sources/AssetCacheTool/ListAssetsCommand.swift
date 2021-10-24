@@ -1,5 +1,5 @@
 //
-//  ListCommand.swift
+//  ListAssetsCommand.swift
 //
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -8,10 +8,10 @@
 import ArgumentParser
 import Foundation
 
-struct ListCommand: ParsableCommand {
+struct ListAssetsCommand: ParsableCommand {
     static var configuration = CommandConfiguration(
-        commandName: "list",
-        abstract: "List cached assets."
+        commandName: "list-assets",
+        abstract: "List assets inside the cache."
     )
 
     @Flag(name: .customShort("j"), help: "Enable JSON Output")

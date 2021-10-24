@@ -1,5 +1,5 @@
 //
-//  ReassembleCommand.swift
+//  ReassembleCacheCommand.swift
 //
 //
 //  Created by Kenneth Endfinger on 10/23/21.
@@ -8,13 +8,13 @@
 import ArgumentParser
 import Foundation
 
-struct ReassembleCommand: ParsableCommand {
+struct ReassembleCacheCommand: ParsableCommand {
     static var configuration = CommandConfiguration(
-        commandName: "reassemble",
+        commandName: "reassemble-cache",
         abstract: "Reassemble cached files into a clean structure."
     )
 
-    @Option(name: .customShort("d"), help: "Reassemble Directory Path")
+    @Option(name: .customShort("d"), help: "Target Directory Path")
     var targetDirectoryPath: String = "cache"
 
     func run() throws {

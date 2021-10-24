@@ -8,7 +8,7 @@
 import Foundation
 
 struct AssetCacheFinder {
-    static func find() -> [URL] {
+    static func find() throws -> [URL] {
         var results: [URL] = []
 
         if let rootAssetCacheURL = assetCacheDataURLAtRoot(URL(fileURLWithPath: "/")) {
@@ -19,7 +19,9 @@ struct AssetCacheFinder {
             results.append(homeAssetCacheURL)
         }
 
-        guard let mountedVolumeURLs = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: nil, options: .skipHiddenVolumes) else {
+        guard let mountedVolumeURLs = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: [
+            .volumeIsRootFileSystemKey
+        ], options: .skipHiddenVolumes) else {
             return results
         }
 
@@ -27,6 +29,11 @@ struct AssetCacheFinder {
             guard let assetCacheURL = assetCacheDataURLAtRoot(url) else {
                 continue
             }
+
+            if try assetCacheURL.resourceValues(forKeys: [.volumeIsRootFileSystemKey]).volumeIsRootFileSystem! {
+                continue
+            }
+
             results.append(assetCacheURL)
         }
 

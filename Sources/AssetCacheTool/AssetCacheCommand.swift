@@ -16,9 +16,10 @@ struct AssetCacheCommand: ParsableCommand {
         abstract: "Apple Asset Cache Utility",
         version: "1.0.0",
         subcommands: [
-            PathCommand.self,
-            ListCommand.self,
-            ReassembleCommand.self
+            PrintCachePathCommand.self,
+            ListAssetsCommand.self,
+            ReassembleCacheCommand.self,
+            FindCachesCommand.self
         ]
     )
 
@@ -26,19 +27,20 @@ struct AssetCacheCommand: ParsableCommand {
     var assetCachePath: String?
 
     func validate() throws {
-        let assetCacheURL = getAssetCache()
-        AssetCacheCommand.cache = AssetCache(assetCacheURL)
+        if let assetCacheURL = try getAssetCache() {
+            AssetCacheCommand.cache = AssetCache(assetCacheURL)
+        }
     }
 
-    private func getAssetCache() -> URL {
+    private func getAssetCache() throws -> URL? {
         if assetCachePath != nil {
             return URL(fileURLWithPath: assetCachePath!)
         }
 
-        let foundAssetCaches = AssetCacheFinder.find()
+        let foundAssetCaches = try AssetCacheFinder.find()
 
         if foundAssetCaches.isEmpty {
-            AssetCacheCommand.exit(withError: "Asset cache not found.")
+            return nil
         }
 
         return foundAssetCaches.first!
