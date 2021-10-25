@@ -28,4 +28,25 @@ internal extension URLSession {
 
         return (data, response, error)
     }
+
+    func synchronousDownloadTask(with request: URLRequest) -> (URL?, URLResponse?, Error?) {
+        var url: URL?
+        var response: URLResponse?
+        var error: Error?
+
+        let semaphore = DispatchSemaphore(value: 0)
+
+        let downloadTask = self.downloadTask(with: request) {
+            url = $0
+            response = $1
+            error = $2
+
+            semaphore.signal()
+        }
+        downloadTask.resume()
+
+        _ = semaphore.wait(timeout: .distantFuture)
+
+        return (url, response, error)
+    }
 }

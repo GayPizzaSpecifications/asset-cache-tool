@@ -53,3 +53,11 @@ GUID: 48B1475B-C221-43E6-967B-5802A2A795AB
   Rank: 1
   Cache Size: 80 GB
 ```
+
+### download-remote-cache
+
+Download a file from a remote cache.
+
+```bash
+$ swift run AssetCacheTool download-remote-cache --remote-cache-url 'http://10.0.15.1:8950' 'https://appldnld.apple.com/myfile.zip' 'myfile.zip'
+```
