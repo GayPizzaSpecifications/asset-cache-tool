@@ -2,7 +2,12 @@ disabled_rules:
 - type_name
 - force_cast
 - trailing_comma
-line_length: 180
+- nesting
+- large_tuple
+# This is only disabled due to usage of "whitelist" in old Apple cache registration configurations.
+# Apple has marked those fields as deprecated, so eventually this can be enabled once they are gone.
+- inclusive_language
+line_length: 190
 identifier_name:
   excluded:
   - id

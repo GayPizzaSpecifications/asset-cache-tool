@@ -50,3 +50,16 @@ internal extension URLSession {
         return (url, response, error)
     }
 }
+
+internal extension Data {
+    func subdata(in range: ClosedRange<Index>) -> Data {
+        subdata(in: range.lowerBound ..< range.upperBound + 1)
+    }
+
+    func stripSignedBytes() -> Data {
+        let actualDataSize = subdata(in: 62 ... 64).withUnsafeBytes {
+            $0.load(as: UInt16.self)
+        }.byteSwapped
+        return subdata(in: 64 ... 64 + Int(actualDataSize))
+    }
+}
