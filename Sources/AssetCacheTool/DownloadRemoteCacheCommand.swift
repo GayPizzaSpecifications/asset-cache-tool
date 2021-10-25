@@ -18,6 +18,9 @@ struct DownloadRemoteCacheCommand: ParsableCommand {
     @Option(name: [.customShort("c"), .customLong("remote-cache-url")], help: "Remote Cache URL")
     var remoteCacheURL: String
 
+    @Option(name: [.customLong("header")], help: "Request HTTP Header (example: X-Apple-Fake=Value)")
+    var headers: [String] = []
+
     @Argument(help: "Origin URL")
     var originFileURL: String
 
@@ -36,6 +39,16 @@ struct DownloadRemoteCacheCommand: ParsableCommand {
         let targetFileURL = URL(fileURLWithPath: targetFilePath)
 
         let cache = RemoteAssetCache(realRemoteCacheURL)
-        try cache.download(realOriginFileURL, to: targetFileURL)
+
+        var headersToAdd: [String: String] = [:]
+        for header in headers {
+            guard let equalsSignIndex = header.firstIndex(of: "=") else {
+                throw "Invalid header '\(header)' specified."
+            }
+            let headerName = header.prefix(upTo: equalsSignIndex)
+            let headerValue = header[header.index(after: equalsSignIndex)...]
+            headersToAdd[String(headerName)] = String(headerValue)
+        }
+        try cache.download(realOriginFileURL, to: targetFileURL, headers: headersToAdd)
     }
 }

@@ -14,8 +14,15 @@ public struct RemoteAssetCache {
         serverBaseURL = url
     }
 
-    public func download(_ originFileURL: URL, to targetFileURL: URL) throws {
-        let request = URLRequest(url: try downloadURL(for: originFileURL))
+    public func download(_ originFileURL: URL, to targetFileURL: URL, headers: [String: String]? = nil) throws {
+        var request = URLRequest(url: try downloadURL(for: originFileURL))
+
+        if let headersToAdd = headers {
+            for (key, value) in headersToAdd {
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+        }
+
         let (downloadedFileURL, _, error) = URLSession.shared.synchronousDownloadTask(with: request)
         if error != nil {
             throw error!
