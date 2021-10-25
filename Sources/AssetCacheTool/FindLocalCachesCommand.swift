@@ -16,8 +16,10 @@ struct FindLocalCachesCommand: ParsableCommand {
     )
 
     func run() throws {
-        for assetCacheURL in try LocalCacheFinder.find() {
-            print(assetCacheURL.path)
+        if #available(macOS 10.12, *) {
+            for assetCacheURL in try LocalCacheFinder.find() {
+                print(assetCacheURL.path)
+            }
         }
     }
 }

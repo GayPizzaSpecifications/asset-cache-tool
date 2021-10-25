@@ -48,7 +48,12 @@ struct AssetCacheToolCommand: ParsableCommand {
             return URL(fileURLWithPath: localCachePath!)
         }
 
-        let foundAssetCaches = try LocalCacheFinder.find()
+        let foundAssetCaches: [URL]
+        if #available(macOS 10.12, *) {
+            foundAssetCaches = try LocalCacheFinder.find()
+        } else {
+            foundAssetCaches = []
+        }
 
         if foundAssetCaches.isEmpty {
             return nil

@@ -3,9 +3,6 @@ import PackageDescription
 
 let package = Package(
     name: "AssetCacheTool",
-    platforms: [
-        .macOS("11.0")
-    ],
     products: [
         .executable(name: "AssetCacheTool", targets: ["AssetCacheTool"]),
         .library(name: "AssetCacheLibrary", type: .static, targets: ["AssetCacheLibrary"])
