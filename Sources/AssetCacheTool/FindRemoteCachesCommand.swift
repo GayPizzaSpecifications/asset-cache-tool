@@ -6,6 +6,7 @@
 //
 
 import ArgumentParser
+import AssetCacheLibrary
 import Foundation
 
 struct FindRemoteCachesCommand: ParsableCommand {

@@ -7,7 +7,8 @@ let package = Package(
         .macOS("11.0")
     ],
     products: [
-        .executable(name: "AssetCacheTool", targets: ["AssetCacheTool"])
+        .executable(name: "AssetCacheTool", targets: ["AssetCacheTool"]),
+        .library(name: "AssetCacheLibrary", type: .static, targets: ["AssetCacheLibrary"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
@@ -18,6 +19,12 @@ let package = Package(
             name: "AssetCacheTool",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .target(name: "AssetCacheLibrary")
+            ]
+        ),
+        .target(
+            name: "AssetCacheLibrary",
+            dependencies: [
                 .product(name: "SQLite", package: "SQLite.swift")
             ]
         )

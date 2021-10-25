@@ -1,17 +1,13 @@
 //
-//  Utilities.swift
+//  Extensions.swift
 //
 //
-//  Created by Kenneth Endfinger on 10/23/21.
+//  Created by Kenneth Endfinger on 10/24/21.
 //
 
 import Foundation
 
-extension String: LocalizedError {
-    public var errorDescription: String? { self }
-}
-
-extension URLSession {
+internal extension URLSession {
     func synchronousDataTask(with request: URLRequest) -> (Data?, URLResponse?, Error?) {
         var data: Data?
         var response: URLResponse?

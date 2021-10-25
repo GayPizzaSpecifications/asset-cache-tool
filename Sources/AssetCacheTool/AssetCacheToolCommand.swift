@@ -6,6 +6,7 @@
 //
 
 import ArgumentParser
+import AssetCacheLibrary
 import Foundation
 
 struct AssetCacheToolCommand: ParsableCommand {
@@ -31,8 +32,8 @@ struct AssetCacheToolCommand: ParsableCommand {
         ]
     )
 
-    @Option(name: .customShort("p"), help: "Local Asset Cache Path")
-    var assetCachePath: String?
+    @Option(name: [.customShort("p"), .customLong("local-cache-path")], help: "Local Asset Cache Path")
+    var localCachePath: String?
 
     func validate() throws {
         if let assetCacheURL = try getLocalAssetCache() {
@@ -41,8 +42,8 @@ struct AssetCacheToolCommand: ParsableCommand {
     }
 
     private func getLocalAssetCache() throws -> URL? {
-        if assetCachePath != nil {
-            return URL(fileURLWithPath: assetCachePath!)
+        if localCachePath != nil {
+            return URL(fileURLWithPath: localCachePath!)
         }
 
         let foundAssetCaches = try LocalCacheFinder.find()

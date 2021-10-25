@@ -8,22 +8,22 @@
 import Foundation
 import SQLite
 
-struct LocalAssetCache {
-    let url: URL
-    let db: Connection
+public struct LocalAssetCache {
+    public let url: URL
+    private let db: Connection
 
-    init(_ url: URL) {
+    public init?(_ url: URL) {
         self.url = url
 
         let databaseURL = url.appendingPathComponent("AssetInfo.db")
         do {
             db = try Connection(databaseURL.path)
         } catch {
-            AssetCacheToolCommand.exit(withError: error)
+            return nil
         }
     }
 
-    func listAllAssets() throws -> [Asset] {
+    public func listAllAssets() throws -> [Asset] {
         var assets: [Asset] = []
         for row in try db.run("SELECT ZGUID, ZINDEX, ZNAMESPACE, ZURI, ZENTITYHEADERS, ZTOTALBYTES FROM ZASSET", []) {
             let guidAsString = row[0]! as! String
@@ -47,19 +47,28 @@ struct LocalAssetCache {
         return assets
     }
 
-    func urlForAsset(_ asset: Asset, part: UInt64 = 0) -> URL {
+    public func urlForAsset(_ asset: Asset, part: UInt64 = 0) -> URL {
         URL(fileURLWithPath: "\(url.path)/\(asset.guid.uuidString)/\(part)")
     }
 
-    struct Asset: Codable {
-        let guid: UUID
-        let index: String?
-        let namespace: String?
-        let uri: String
-        let headers: [String: String]
-        let totalBytes: UInt64
+    public struct Asset: Codable {
+        public init(guid: UUID, index: String?, namespace: String?, uri: String, headers: [String: String], totalBytes: UInt64) {
+            self.guid = guid
+            self.index = index
+            self.namespace = namespace
+            self.uri = uri
+            self.headers = headers
+            self.totalBytes = totalBytes
+        }
 
-        func contentTypeHeader() -> String? {
+        public let guid: UUID
+        public let index: String?
+        public let namespace: String?
+        public let uri: String
+        public let headers: [String: String]
+        public let totalBytes: UInt64
+
+        public func contentTypeHeader() -> String? {
             headers["Content-Type"] ?? headers["content-type"] ?? headers["CONTENT-TYPE"]
         }
     }

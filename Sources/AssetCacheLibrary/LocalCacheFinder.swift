@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct LocalCacheFinder {
-    static func find() throws -> [URL] {
+public enum LocalCacheFinder {
+    public static func find() throws -> [URL] {
         var results: [URL] = []
 
         if let rootAssetCacheURL = assetCacheDataURLAtRoot(URL(fileURLWithPath: "/")) {
@@ -40,7 +40,7 @@ struct LocalCacheFinder {
         return results
     }
 
-    static func assetCacheDataURLAtRoot(_ root: URL) -> URL? {
+    public static func assetCacheDataURLAtRoot(_ root: URL) -> URL? {
         var actualRootPath = root.path
         if root.path.hasSuffix("/") {
             actualRootPath = String(root.path.prefix(root.path.count - 1))
