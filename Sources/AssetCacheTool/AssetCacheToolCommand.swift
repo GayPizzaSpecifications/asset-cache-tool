@@ -26,7 +26,8 @@ struct AssetCacheToolCommand: ParsableCommand {
             PrintLocalCachePathCommand.self,
             ListLocalAssetsCommand.self,
             ReassembleLocalCacheCommand.self,
-            FindLocalCachesCommand.self
+            FindLocalCachesCommand.self,
+            FindRemoteCachesCommand.self
         ]
     )
 

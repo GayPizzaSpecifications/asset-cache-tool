@@ -39,3 +39,17 @@ Find caches that are located on the current system.
 $ swift run AssetCacheTool find-local-caches
 /Volumes/MyCacheDrive/Library/Application Support/Apple/AssetCache/Data
 ```
+
+### find-remote-caches
+
+Find caches that are located on the network.
+
+```bash
+$ swift run AssetCacheTool find-remote-caches -l 10.0.15.1
+GUID: 48B1475B-C221-43E6-967B-5802A2A795AB
+  Address: 10.0.15.1
+  Port: 8950
+  Version: 243
+  Rank: 1
+  Cache Size: 80 GB
+```
