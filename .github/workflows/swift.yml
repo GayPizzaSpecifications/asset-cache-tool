@@ -7,7 +7,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Build Executable
-        run: swift build -c release --arch arm64e --arch x86_64
+        run: swift build -c release --arch arm64 --arch x86_64
       - name: Copy Executable
         run: cp .build/apple/Products/Release/AssetCacheTool AssetCacheTool
       - name: Archive Executable
