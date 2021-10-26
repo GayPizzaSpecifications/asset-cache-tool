@@ -7,6 +7,10 @@
 
 import Foundation
 
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
 public enum RemoteCacheLocator {
     private static let locateEndpointURL = URL(string: "https://lcdn-locator.apple.com/lcdn/locate")!
 

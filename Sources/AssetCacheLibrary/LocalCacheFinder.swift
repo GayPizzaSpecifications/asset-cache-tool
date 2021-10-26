@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if os(macOS)
+#if os(macOS) || os(Linux)
     public enum LocalCacheFinder {
         @available(macOS 10.12, *)
         public static func find() throws -> [URL] {

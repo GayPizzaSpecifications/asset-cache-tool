@@ -7,6 +7,10 @@
 
 import Foundation
 
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
 public enum LocalCacheRegistration {
     private static let cacheRegistrationConfigurationURL = URL(string: "http://suconfig.apple.com/resource/registration/v1/config.plist")!
 

@@ -7,6 +7,10 @@
 
 import Foundation
 
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
 internal extension URLSession {
     func synchronousDataTask(with request: URLRequest) -> (Data?, URLResponse?, Error?) {
         var data: Data?

@@ -7,6 +7,10 @@
 
 import Foundation
 
+#if canImport(FoundationNetworking)
+    import FoundationNetworking
+#endif
+
 public struct RemoteAssetCache {
     public let serverBaseURL: URL
 
