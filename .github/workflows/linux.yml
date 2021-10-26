@@ -1,0 +1,21 @@
+name: Linux
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Setup Swift
+        uses: fwal/setup-swift@v1
+        with:
+          swift-version: "5"
+      - name: Build Executable
+        run: swift build -c release --arch x86_64
+      - name: Copy Executable
+        run: cp .build/release/AssetCacheTool AssetCacheTool
+      - name: Archive Executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: AssetCacheTool.amd64
+          path: AssetCacheTool

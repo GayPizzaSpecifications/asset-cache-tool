@@ -1,8 +1,8 @@
-name: Swift
+name: macOS
 on: [push]
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-11
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -16,14 +16,14 @@ jobs:
           name: AssetCacheTool
           path: AssetCacheTool
   format:
-    runs-on: macos-latest
+    runs-on: macos-11
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Swift Format
         run: swiftformat --lint Sources
   lint:
-    runs-on: macos-latest
+    runs-on: macos-11
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
