@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "AssetCacheTool",
     products: [
-        .executable(name: "AssetCacheTool", targets: ["AssetCacheTool"]),
+        .executable(name: "asset-cache-tool", targets: ["AssetCacheTool"]),
         .library(name: "AssetCacheLibrary", type: .static, targets: ["AssetCacheLibrary"])
     ],
     dependencies: [
