@@ -13,9 +13,9 @@ jobs:
       - name: Build Executable
         run: swift build -c release --arch x86_64
       - name: Copy Executable
-        run: cp .build/release/AssetCacheTool AssetCacheTool
+        run: cp .build/release/asset-cache-tool asset-cache-tool
       - name: Archive Executable
         uses: actions/upload-artifact@v2
         with:
-          name: AssetCacheTool.amd64
-          path: AssetCacheTool
+          name: asset-cache-tool.amd64
+          path: asset-cache-tool

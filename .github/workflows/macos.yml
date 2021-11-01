@@ -9,23 +9,23 @@ jobs:
       - name: Build Executable
         run: swift build -c release --arch arm64 --arch x86_64
       - name: Copy Executable
-        run: cp .build/apple/Products/Release/AssetCacheTool AssetCacheTool
+        run: cp .build/apple/Products/Release/asset-cache-tool asset-cache-tool
       - name: Archive Executable
         uses: actions/upload-artifact@v2
         with:
-          name: AssetCacheTool
-          path: AssetCacheTool
+          name: asset-cache-tool
+          path: asset-cache-tool
   format:
     runs-on: macos-11
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Swift Format
-        run: swiftformat --lint Sources
+        run: swiftformat --lint Package.swift Sources
   lint:
     runs-on: macos-11
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Swift Lint
-        run: swiftlint Sources
+        run: swiftlint Package.swift Sources
