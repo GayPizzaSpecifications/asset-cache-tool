@@ -1,5 +1,10 @@
 # Asset Cache Tool
 
+[![GitHub Workflow](https://github.com/kendfinger/asset-cache-tool/actions/workflows/macos.yml/badge.svg)](https://github.com/kendfinger/asset-cache-tool/actions/workflows/macos.yml)
+[![Latest macOS Build](https://shields.io/badge/download-macOS nightly-blue)](https://nightly.link/kendfinger/asset-cache-tool/workflows/macos/main/asset-cache-tool.zip)
+[![Latest Linux Build](https://shields.io/badge/download-Linux nightly-blue)](https://nightly.link/kendfinger/asset-cache-tool/workflows/linux/main/asset-cache-tool.zip)
+[![Latest Release](https://shields.io/github/v/release/kendfinger/asset-cache-tool?display_name=tag&sort=semver)](https://github.com/kendfinger/asset-cache-tool/releases/latest)
+
 A library and tool for interacting with both the local and remote asset caches.
 
 This is based on [research](https://github.com/kendfinger/AppleCache) I did a few years ago on the Apple Asset Cache (Content Cache) system.
