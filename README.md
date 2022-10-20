@@ -1,29 +1,29 @@
 # Asset Cache Tool
 
-[![GitHub Workflow](https://github.com/kendfinger/asset-cache-tool/actions/workflows/macos.yml/badge.svg)](https://github.com/kendfinger/asset-cache-tool/actions/workflows/macos.yml)
-[![Latest macOS Build](https://shields.io/badge/download-macOS%20nightly-blue)](https://nightly.link/kendfinger/asset-cache-tool/workflows/macos/main/asset-cache-tool.zip)
-[![Latest Linux Build](https://shields.io/badge/download-Linux%20nightly-blue)](https://nightly.link/kendfinger/asset-cache-tool/workflows/linux/main/asset-cache-tool.zip)
-[![Latest Release](https://shields.io/github/v/release/kendfinger/asset-cache-tool?display_name=tag&sort=semver)](https://github.com/kendfinger/asset-cache-tool/releases/latest)
+[![GitHub Workflow](https://github.com/mysticlgbt/asset-cache-tool/actions/workflows/macos.yml/badge.svg)](https://github.com/mysticlgbt/asset-cache-tool/actions/workflows/macos.yml)
+[![Latest macOS Build](https://shields.io/badge/download-macOS%20nightly-blue)](https://nightly.link/mysticlgbt/asset-cache-tool/workflows/macos/main/asset-cache-tool.zip)
+[![Latest Linux Build](https://shields.io/badge/download-Linux%20nightly-blue)](https://nightly.link/mysticlgbt/asset-cache-tool/workflows/linux/main/asset-cache-tool.zip)
+[![Latest Release](https://shields.io/github/v/release/mysticlgbt/asset-cache-tool?display_name=tag&sort=semver)](https://github.com/mysticlgbt/asset-cache-tool/releases/latest)
 
 A library and tool for interacting with both the local and remote asset caches.
 
-This is based on [research](https://github.com/kendfinger/AppleCache) I did a few years ago on the Apple Asset Cache (Content Cache) system.
+This is based on [research](https://github.com/azenla/AppleCache) I did a few years ago on the Apple Asset Cache (Content Cache) system.
 
 ## Usage
 
 ### Install Latest with Homebrew
 
 1. Install [Homebrew](https://brew.sh)
-2. Install asset-cache-tool with Homebrew: `brew install kendfinger/tools/asset-cache-tool`
+2. Install asset-cache-tool with Homebrew: `brew install mysticlgbt/made/asset-cache-tool`
 
 ### Install Nightly With Mint
 
 1. Install Mint: `brew install mint`
-2. Install asset-cache-tool with Mint: `mint install kendfinger/asset-cache-tool@main`
+2. Install asset-cache-tool with Mint: `mint install mysticlgbt/asset-cache-tool@main`
 
 ### Run with SwiftPM
 
-1. Clone the source: `git clone https://github.com/kendfinger/asset-cache-tool.git asset-cache-tool`
+1. Clone the source: `git clone https://github.com/mysticlgbt/asset-cache-tool.git asset-cache-tool`
 2. Switch to source directory: `cd asset-cache-tool`
 3. Run asset-cache-tool with SwiftPM: `swift run asset-cache-tool`
 
