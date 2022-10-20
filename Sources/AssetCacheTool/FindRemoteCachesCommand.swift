@@ -2,7 +2,7 @@
 //  FindRemoteCachesCommand.swift
 //
 //
-//  Created by Kenneth Endfinger on 10/24/21.
+//  Created by Alex Zenla on 10/24/21.
 //
 
 import ArgumentParser
@@ -29,7 +29,7 @@ struct FindRemoteCachesCommand: ParsableCommand {
             publicAddressRanges: [[]],
             locatorSoftware: [
                 .init(
-                    build: "https://github.com/kendfinger/AssetCacheTool",
+                    build: "https://github.com/kZenla/AssetCacheTool",
                     type: "system",
                     name: "AssetCacheTool",
                     id: nil,

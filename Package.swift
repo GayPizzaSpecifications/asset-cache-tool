@@ -8,8 +8,8 @@ let package = Package(
         .library(name: "AssetCacheLibrary", type: .static, targets: ["AssetCacheLibrary"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
-        .package(url: "https://github.com/stephencelis/SQLite.swift", .revision("e191c7d04583a1fd4e0f95e73bec2161a30e4857"))
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.1.4"),
+        .package(url: "https://github.com/stephencelis/SQLite.swift", .revision("a4c1d1dab2a89f3bdd6f2741f9fe7691f10cf8a5"))
     ],
     targets: [
         .target(
